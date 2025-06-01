@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# Site de Mariage - Coralie et Ralph
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ce projet est un site web pour le mariage de Coralie et Ralph qui aura lieu à Méribel le 06.09.2025.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+1. Assurez-vous d'avoir Node.js installé sur votre machine
+2. Clonez ce dépôt
+3. Installez les dépendances :
 
-### `npm start`
+```bash
+npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Développement
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Pour lancer le serveur de développement :
 
-### `npm test`
+```bash
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Le site sera accessible à l'adresse [http://localhost:3000](http://localhost:3000)
 
-### `npm run build`
+## Structure des fichiers
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `/src/components/` : Contient tous les composants React
+- `/public/` : Contient les ressources statiques (images, etc.)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Ressources nécessaires
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Avant de lancer le projet, assurez-vous d'ajouter les fichiers suivants dans le dossier `/public` :
 
-### `npm run eject`
+1. `logo.png` : Le logo du mariage
+2. `background.jpg` : L'image de fond de la page d'accueil
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Fonctionnalités
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Page d'accueil avec compte à rebours
+- Menu de navigation
+- Sections pour :
+  - Bio des Mariés
+  - Dress Code et Thème
+  - Logement
+  - Découverte de Méribel
+  - Programme du Weekend
+  - Quizz et Danse Libanaise
+  - Cagnotte du Mariage
+  - Photos et Album de Mariage
+  - Formulaire de présence
