@@ -45,7 +45,7 @@ const HotelStyleCarousel: React.FC<HotelStyleCarouselProps> = ({ items, classNam
   const currentItem = items[currentIndex];
 
   // Filtrer uniquement les éléments de type 'image' pour les miniatures
-  const imageItems = items.filter(item => item.type === 'image');
+  const imageItems = items.filter((item) => item.type === 'image');
 
   return (
     <div className={`w-full ${className}`}>
@@ -54,19 +54,19 @@ const HotelStyleCarousel: React.FC<HotelStyleCarouselProps> = ({ items, classNam
           {/* Sidebar avec miniatures */}
           <div className="md:w-[120px] p-4 bg-gray-50 flex md:flex-col gap-2 overflow-auto">
             {imageItems.map((item, index) => {
-              const originalIndex = items.findIndex(i => i === item);
+              const originalIndex = items.findIndex((i) => i === item);
               return (
                 <button
                   key={`thumb-${index}`}
                   onClick={() => goToSlide(originalIndex)}
                   className={`flex-shrink-0 w-16 h-16 overflow-hidden rounded-md transition-all ${
-                    currentIndex === originalIndex 
-                      ? 'ring-2 ring-blue-500 scale-105' 
+                    currentIndex === originalIndex
+                      ? 'ring-2 ring-blue-500 scale-105'
                       : 'border border-gray-100 opacity-80 hover:opacity-100'
                   }`}
-                  aria-label={`Voir ${item.alt || "image"}`}
+                  aria-label={`Voir ${item.alt || 'image'}`}
                 >
-                  <img 
+                  <img
                     src={item.content}
                     alt={`Miniature ${index + 1}`}
                     className="w-full h-full object-fill"
@@ -80,14 +80,16 @@ const HotelStyleCarousel: React.FC<HotelStyleCarouselProps> = ({ items, classNam
           <div className="relative flex-grow">
             <div className="relative min-h-[350px] md:min-h-[450px]">
               {currentItem.type === 'image' ? (
-                <img 
+                <img
                   src={currentItem.content}
                   alt={currentItem.alt || "Image de l'hôtel"}
-                  className="object-fill"
+                  className="object-fit"
                 />
               ) : (
                 <div className="bg-green-50 w-full h-full flex flex-col justify-center p-8">
-                  <h2 className="text-3xl font-script text-center mb-4 italic text-gray-800">Hôtel L'Eterlou</h2>
+                  <h2 className="text-3xl font-script text-center mb-4 italic text-gray-800">
+                    Hôtel L'Eterlou
+                  </h2>
                   <p className="text-center text-gray-700 leading-relaxed max-w-2xl mx-auto">
                     {currentItem.content}
                   </p>
@@ -101,22 +103,44 @@ const HotelStyleCarousel: React.FC<HotelStyleCarouselProps> = ({ items, classNam
 
               {/* Navigation */}
               <div className="absolute top-0 left-0 w-full h-full flex items-center justify-between">
-                <button 
+                <button
                   onClick={goToPrevious}
                   className="bg-white/80 hover:bg-white text-gray-800 hover:text-gray-900 rounded-r-full p-3 transition-all shadow-sm hover:shadow ml-2"
                   aria-label="Slide précédent"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
                   </svg>
                 </button>
-                <button 
+                <button
                   onClick={goToNext}
                   className="bg-white/80 hover:bg-white text-gray-800 hover:text-gray-900 rounded-l-full p-3 transition-all shadow-sm hover:shadow mr-2"
                   aria-label="Slide suivant"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 </button>
               </div>
@@ -147,4 +171,4 @@ const HotelStyleCarousel: React.FC<HotelStyleCarouselProps> = ({ items, classNam
   );
 };
 
-export default HotelStyleCarousel; 
+export default HotelStyleCarousel;

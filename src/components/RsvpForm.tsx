@@ -69,7 +69,7 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-5 w-full ">
       {/* Nom et prénom */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="text-center">

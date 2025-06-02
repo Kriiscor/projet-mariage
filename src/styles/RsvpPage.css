@@ -1,0 +1,49 @@
+.rsvp-header {
+  position: relative;
+  background-image: url('../../public/images/wedding-header.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 200px;
+}
+
+.rsvp-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5));
+}
+
+.rsvp-header-content {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.rsvp-header-title {
+  color: white;
+  margin-bottom: 1rem;
+  font-family: 'Script MT', cursive;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.rsvp-header-text {
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  #rsvp-header-image {
+    display: none;
+  }
+}

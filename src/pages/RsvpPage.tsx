@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import RsvpForm, { RsvpFormData } from '../components/RsvpForm';
+import { submitRsvpForm } from '../services/rsvpService';
 import '../App.css';
+import '../styles/RsvpPage.css';
 
 /**
  * Page de RSVP pour le mariage
@@ -11,19 +13,6 @@ const RsvpPage: React.FC = () => {
     type: 'success' | 'error' | null;
     message: string;
   }>({ type: null, message: '' });
-
-  // Version simplifiée du service RSVP
-  const submitRsvpForm = async (formData: RsvpFormData) => {
-    return new Promise<{ success: boolean; message: string }>((resolve) => {
-      setTimeout(() => {
-        console.log('Données du formulaire:', formData);
-        resolve({
-          success: true,
-          message: 'Votre réponse a été enregistrée avec succès !',
-        });
-      }, 1000);
-    });
-  };
 
   const handleSubmit = async (formData: RsvpFormData) => {
     setLoading(true);
@@ -54,35 +43,34 @@ const RsvpPage: React.FC = () => {
   };
 
   return (
-    <div className="py-6 bg-[#f8f5e6] relative overflow-x-hidden">
-      <div className="container mx-auto px-4 max-w-3xl relative">
-        {/* En-tête avec image de fond et logo */}
-        <div className="relative mb-8 rounded-lg overflow-hidden">
-          <div className="absolute top-4 left-4 z-10">
-            <div className="flex items-center">
-              <div className="bg-black bg-opacity-70 p-2 rounded-full">
-                <img
-                  src="/tryt-01.svg"
-                  alt="Logo"
-                  className="w-12 h-12"
-                  style={{ filter: 'brightness(0) invert(1)' }}
-                />
-              </div>
-              <span className="ml-2 text-white font-script text-xl">Coralie and Ralph</span>
+    <div className="py-6 bg-gradient-to-b from-white via-[#f8f5e6] to-[#e8e2c7] relative overflow-x-hidden">
+      {/* En-tête avec image de fond et logo */}
+      <div className="relative mb-8 rounded-lg overflow-hidden max-w-7xl mx-auto">
+        <div id="rsvp-header-image" className="absolute top-4 left-4 z-10">
+          <div className="flex items-center">
+            <div className="bg-black bg-opacity-70 p-2 rounded-full">
+              <img
+                src="/tryt-01.svg"
+                alt="Logo"
+                className="w-12 h-12"
+                style={{ filter: 'brightness(0) invert(1)' }}
+              />
             </div>
+            <span className="ml-2 text-white font-script text-xl">Coralie and Ralph</span>
           </div>
+        </div>
 
-          <div className="w-full h-[200px] bg-gray-500"></div>
-
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-center px-4">
-            <h1 className="text-3xl font-script text-white mb-4">Confirmez votre venue</h1>
-            <p className="text-white text-sm max-w-md">
+        <div className="rsvp-header">
+          <div className="rsvp-header-content">
+            <h1 className="rsvp-header-title text-3xl">Confirmez votre venue</h1>
+            <p className="rsvp-header-text text-sm max-w-md">
               Nous espérons que vous pourrez vous joindre à nous !<br />
               Remplissez le formulaire ci-dessous
             </p>
           </div>
         </div>
-
+      </div>
+      <div className="container bg-[#f8f5e6] p-10 max-w-7xl relative px-4">
         {notification.type && (
           <div
             className={`mb-6 p-4 rounded-md ${

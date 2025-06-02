@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Logement from './pages/Logement';
 import RsvpPage from './pages/RsvpPage';
+import MenusPage from './pages/MenusPage';
 import Navigation from './components/Navigation';
 import './App.css';
+import Timeline from './components/Timeline';
 
 // Composant Layout qui enveloppe la navigation et la page
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -46,7 +48,23 @@ function App() {
             </Layout>
           }
         />
-        {/* Ajoutez d'autres routes ici de la même manière */}
+        <Route
+          path="/menus"
+          element={
+            <Layout>
+              <MenusPage />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/programme"
+          element={
+            <Layout>
+              <Timeline />
+            </Layout>
+          }
+        />
       </Routes>
     </Router>
   );

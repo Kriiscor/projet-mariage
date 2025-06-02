@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-
-/**
- * Interface pour les props du composant Navigation
- */
+import '../styles/Navigation.styles.css';
 interface NavigationProps {
   className?: string;
   isDarkMode?: boolean;
@@ -78,20 +75,20 @@ const Navigation: React.FC<NavigationProps> = ({ className = '', isDarkMode = fa
         </a>
 
         {/* Navigation Links */}
-        <div className="hidden md:flex gap-8 items-center">
+        {/*<div className="hidden md:flex gap-8 items-center">
           <a
             href="/bio"
-            className="text-white no-underline text-lg relative pb-0.5 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[1px] after:bg-white after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
+            className="text-white no-underline text-lg relative pb-0.5 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[1px] after:bg-white after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 disabled  "
           >
             Les Mariés
           </a>
           <a
             href="/programme"
-            className="text-white no-underline text-lg relative pb-0.5 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[1px] after:bg-white after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
+            className="text-white no-underline text-lg relative pb-0.5 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[1px] after:bg-white after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 disabled"
           >
             Programme
           </a>
-        </div>
+        </div>*/} 
 
         {/* Menu Button */}
         <button
@@ -139,36 +136,17 @@ const Navigation: React.FC<NavigationProps> = ({ className = '', isDarkMode = fa
             />
 
             {/* Side Menu Links */}
-            <div className="flex flex-col gap-4 w-full">
+            <div id="side-menu-links" className="flex flex-col gap-4 w-full ">
               <a
-                href="/bio"
+                id="side-menu-link"
+                href="/formulaire"
                 onClick={closeMenu}
                 className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full"
               >
-                Bio des Mariés
+                Formulaire de présence
               </a>
               <a
-                href="/dress-code"
-                onClick={closeMenu}
-                className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full"
-              >
-                Dress Code et Thème
-              </a>
-              <a
-                href="/logement"
-                onClick={closeMenu}
-                className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full"
-              >
-                Logement
-              </a>
-              <a
-                href="/decouverte"
-                onClick={closeMenu}
-                className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full"
-              >
-                Découverte de Méribel
-              </a>
-              <a
+                id="side-menu-link"
                 href="/programme"
                 onClick={closeMenu}
                 className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full"
@@ -176,33 +154,53 @@ const Navigation: React.FC<NavigationProps> = ({ className = '', isDarkMode = fa
                 Programme du Weekend
               </a>
               <a
-                href="/quiz"
+                id="side-menu-link"
+                href="/logement"
                 onClick={closeMenu}
                 className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full"
+              >
+                Logement
+              </a>
+              {/*<a
+                id="side-menu-link"
+                href="/bio"
+                onClick={closeMenu}
+                className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full disabled"
+              >
+                Bio des Mariés
+              </a>
+              <a
+                id="side-menu-link"
+                href="/decouverte"
+                onClick={closeMenu}
+                className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full disabled"
+              >
+                Découverte de Méribel
+              </a>
+              <a
+                id="side-menu-link"
+                href="/quiz"
+                onClick={closeMenu}
+                className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full disabled"
               >
                 Quizz et Danse Libanaise
               </a>
               <a
+                id="side-menu-link"
                 href="/cagnotte"
                 onClick={closeMenu}
-                className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full"
+                className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full disabled"
               >
                 Cagnotte du Mariage
               </a>
               <a
+                id="side-menu-link"
                 href="/photos"
                 onClick={closeMenu}
-                className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full"
+                className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full disabled"
               >
                 Photos et Album de Mariage
-              </a>
-              <a
-                href="/formulaire"
-                onClick={closeMenu}
-                className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full"
-              >
-                Formulaire de présence
-              </a>
+              </a>*/}
             </div>
           </div>
         </>

@@ -26,12 +26,12 @@ interface SimpleCarouselProps {
  * @param {SimpleCarouselProps} props - Les props du composant
  * @returns {JSX.Element} Le composant de carrousel
  */
-const SimpleCarousel: React.FC<SimpleCarouselProps> = ({ 
-  items, 
-  className = '', 
+const SimpleCarousel: React.FC<SimpleCarouselProps> = ({
+  items,
+  className = '',
   showCounter = true,
   showDots = true,
-  autoPlay = false
+  autoPlay = false,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -39,7 +39,7 @@ const SimpleCarousel: React.FC<SimpleCarouselProps> = ({
 
   const goToPrevious = () => {
     if (isTransitioning) return;
-    
+
     setDirection('left');
     setIsTransitioning(true);
     const isFirstSlide = currentIndex === 0;
@@ -49,7 +49,7 @@ const SimpleCarousel: React.FC<SimpleCarouselProps> = ({
 
   const goToNext = () => {
     if (isTransitioning) return;
-    
+
     setDirection('right');
     setIsTransitioning(true);
     const isLastSlide = currentIndex === items.length - 1;
@@ -59,7 +59,7 @@ const SimpleCarousel: React.FC<SimpleCarouselProps> = ({
 
   const goToSlide = (slideIndex: number) => {
     if (isTransitioning || slideIndex === currentIndex) return;
-    
+
     setDirection(slideIndex > currentIndex ? 'right' : 'left');
     setIsTransitioning(true);
     setCurrentIndex(slideIndex);
@@ -70,20 +70,20 @@ const SimpleCarousel: React.FC<SimpleCarouselProps> = ({
     const timer = setTimeout(() => {
       setIsTransitioning(false);
     }, 300);
-    
+
     return () => clearTimeout(timer);
   }, [currentIndex]);
 
   // Animation automatique si autoPlay est activé
   useEffect(() => {
     if (!autoPlay) return;
-    
+
     const interval = setInterval(() => {
       if (!isTransitioning) {
         goToNext();
       }
     }, 5000); // Changer de slide toutes les 5 secondes
-    
+
     return () => clearInterval(interval);
   }, [currentIndex, isTransitioning, autoPlay]);
 
@@ -91,27 +91,31 @@ const SimpleCarousel: React.FC<SimpleCarouselProps> = ({
 
   return (
     <div className={`relative w-full ${className}`}>
-      <div className="relative overflow-hidden rounded-md">
+      <div className="relative overflow-hidden rounded-md ">
         {/* Slide content */}
-        <div 
-          className={`transition-all duration-300 ${
-            isTransitioning 
-              ? `transform ${direction === 'right' ? '-translate-x-5 opacity-0' : 'translate-x-5 opacity-0'}` 
+        <div
+          className={`transition-all duration-500 ${
+            isTransitioning
+              ? `transform ${
+                  direction === 'right' ? '-translate-x-5 opacity-0' : 'translate-x-5 opacity-0'
+                }`
               : 'translate-x-0 opacity-100'
           }`}
         >
           {currentItem.type === 'image' ? (
-            <div className="relative aspect-[3/2] md:aspect-[21/9] lg:aspect-[3/1] w-full overflow-hidden">
-              <img 
+            <div className="relative aspect-[4/3] md:aspect-[21/9] lg:aspect-[3/1] w-full overflow-hidden h-[500px]">
+              <img
                 src={currentItem.content}
-                alt={currentItem.alt || "Image"}
+                alt={currentItem.alt || 'Image'}
                 className="object-cover"
               />
             </div>
           ) : (
             <div className="relative aspect-[3/2] md:aspect-[21/9] lg:aspect-[3/1] w-full bg-green-50 flex flex-col justify-center p-8">
-              <h2 className="text-3xl font-script text-center mb-4 italic text-gray-800">Hôtel L'Eterlou</h2>
-              <p className="text-center text-gray-700 leading-relaxed max-w-2xl mx-auto">
+              <h2 className="text-3xl font-script text-center mb-4 italic text-gray-800">
+                Hôtel L'Eterlou
+              </h2>
+              <p className="text-center text-2xl text-gray-700 leading-relaxed max-w-2xl mx-auto h-[300px] flex justify-center items-center">
                 {currentItem.content}
               </p>
               {currentItem.description && (
@@ -124,24 +128,41 @@ const SimpleCarousel: React.FC<SimpleCarouselProps> = ({
         </div>
 
         {/* Flèches de navigation */}
-        <button 
+        <button
           onClick={goToPrevious}
           disabled={isTransitioning}
           className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 hover:text-gray-900 rounded-full p-3 z-10 transition-all shadow-md hover:shadow-lg"
           aria-label="Slide précédent"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </button>
-        
-        <button 
+
+        <button
           onClick={goToNext}
           disabled={isTransitioning}
           className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 hover:text-gray-900 rounded-full p-3 z-10 transition-all shadow-md hover:shadow-lg"
           aria-label="Slide suivant"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
@@ -173,4 +194,4 @@ const SimpleCarousel: React.FC<SimpleCarouselProps> = ({
   );
 };
 
-export default SimpleCarousel; 
+export default SimpleCarousel;
