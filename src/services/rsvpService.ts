@@ -1,6 +1,16 @@
 import { RsvpFormData } from '../components/RsvpForm';
 
-const API_URL = import.meta.env.VITE_API_URL;
+// Configuration de l'API
+const getApiUrl = () => {
+  const envApiUrl = import.meta.env?.VITE_API_URL;
+  if (!envApiUrl) {
+    console.warn("VITE_API_URL n'est pas défini, utilisation de l'URL par défaut");
+    return 'http://localhost:5000/api';
+  }
+  return envApiUrl;
+};
+
+const API_URL = getApiUrl();
 
 /**
  * Service pour gérer les soumissions du formulaire RSVP
@@ -24,6 +34,8 @@ export const submitRsvpForm = async (
       accommodationDates: formData.accommodationDates,
       comments: formData.comments,
     };
+
+    console.log('Envoi de la requête à:', API_URL);
 
     const response = await fetch(`${API_URL}/guests`, {
       method: 'POST',
