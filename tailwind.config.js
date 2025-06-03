@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}',
-    './public/index.html',
-  ],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
     extend: {
       colors: {
@@ -23,17 +20,26 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         script: ['Playfair Display', 'serif'],
+        playfair: ['"Playfair Display"', 'serif'],
       },
       keyframes: {
         'slide-in': {
           '0%': { transform: 'translateX(100%)' },
-          '100%': { transform: 'translateX(0)' }
-        }
+          '100%': { transform: 'translateX(0)' },
+        },
       },
       animation: {
-        'slide-in': 'slide-in 0.3s ease-out'
-      }
+        'slide-in': 'slide-in 0.3s ease-out',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.text-shadow': {
+          'text-shadow': '2px 2px 4px rgba(0, 0, 0, 0.3)',
+        },
+      });
+    },
+  ],
 };
