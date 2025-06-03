@@ -23,7 +23,7 @@ const Home: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  console.log('Variable de test Render:', import.meta.env.VITE_RENDER_TEST);
+  console.log('Variable de test Render:', import.meta.env?.VITE_RENDER_TEST);
 
   return (
     <HomeContainer>
