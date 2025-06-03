@@ -4,7 +4,7 @@ export const HomeContainer = styled.div`
   height: 100vh;
   width: 100%;
   position: relative;
-  background: url('/images/background.png') center 50% / cover no-repeat;
+  background: url('/images/Background.png') center 50% / cover no-repeat;
   background-position: 90% 0%;
   display: flex;
   flex-direction: column;
