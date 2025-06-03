@@ -2,9 +2,9 @@ import { RsvpFormData } from '../components/RsvpForm';
 
 // Configuration de l'API
 const getApiUrl = () => {
-  const envApiUrl = import.meta.env?.VITE_API_URL;
+  const envApiUrl = process.env.REACT_APP_API_URL;
   if (!envApiUrl) {
-    console.warn("VITE_API_URL n'est pas défini, utilisation de l'URL par défaut");
+    console.warn("REACT_APP_API_URL n'est pas défini, utilisation de l'URL par défaut");
     return 'http://localhost:5000/api';
   }
   return envApiUrl;
