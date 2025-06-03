@@ -1,6 +1,6 @@
 services:
   - type: staticSite # Ou 'web' si vous servez statiquement depuis un service web
-    name: projetmariage-fullstack-front # Le nom de votre service sur Render
+    name: projet-mariage # Le nom de votre service sur Render
     staticPublishPath: build # Ou 'dist' si c'est le nom de votre dossier de build
     routes:
       - type: rewrite
