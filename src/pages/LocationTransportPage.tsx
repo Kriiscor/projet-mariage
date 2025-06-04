@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-console.log('REACT_APP_GOOGLE_MAPS_API_KEY:', process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
 const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 interface MapLocation {
@@ -71,6 +70,25 @@ const mapContainerStyle = {
 };
 
 const LocationTransportPage: React.FC = () => {
+  const mapRef = useRef<google.maps.Map | null>(null);
+
+  const onLoad = useCallback((map: google.maps.Map) => {
+    mapRef.current = map;
+    // Tenter de déclencher un redimensionnement avec un léger délai
+    setTimeout(() => {
+      if (mapRef.current) {
+        // Vérifier si la réf est toujours valide
+        google.maps.event.trigger(mapRef.current, 'resize');
+        // Optionnel: recentrer la carte peut aussi aider
+        // mapRef.current.setCenter(mapRef.current.getCenter()!);
+      }
+    }, 100); // Délai de 100ms
+  }, []);
+
+  const onUnmount = useCallback(() => {
+    mapRef.current = null;
+  }, []);
+
   if (!API_KEY) {
     return (
       <div className="flex h-screen items-center justify-center">
@@ -98,11 +116,17 @@ const LocationTransportPage: React.FC = () => {
                     {paragraph}
                   </p>
                 ))}
-              <div className="mt-4 overflow-hidden rounded">
+              {/* DIV enveloppant pour débogage de la carte */}
+              <div
+                className="mt-4 overflow-hidden rounded border-4 border-purple-500"
+                style={{ height: mapContainerStyle.height, width: mapContainerStyle.width }} // Appliquer la hauteur ici aussi
+              >
                 <GoogleMap
-                  mapContainerStyle={mapContainerStyle}
+                  mapContainerStyle={mapContainerStyle} // Ce style s'applique à un enfant créé par GoogleMap
                   center={loc.mapOptions.center}
                   zoom={loc.mapOptions.zoom}
+                  onLoad={onLoad}
+                  onUnmount={onUnmount}
                 >
                   <Marker position={loc.markerPosition} />
                 </GoogleMap>
