@@ -94,7 +94,7 @@ const SimpleCarousel: React.FC<SimpleCarouselProps> = ({
       <div className="relative overflow-hidden rounded-md ">
         {/* Slide content */}
         <div
-          className={`transition-all duration-500 ${
+          className={`transition-all duration-500 flex items-center justify-center ${
             isTransitioning
               ? `transform ${
                   direction === 'right' ? '-translate-x-5 opacity-0' : 'translate-x-5 opacity-0'
@@ -103,23 +103,23 @@ const SimpleCarousel: React.FC<SimpleCarouselProps> = ({
           }`}
         >
           {currentItem.type === 'image' ? (
-            <div className="relative aspect-[4/3] md:aspect-[21/9] lg:aspect-[3/1] w-full overflow-hidden h-[500px]">
+            <div className="relative aspect-[4/3] sm:aspect-video md:aspect-[21/9] lg:aspect-[3/1] w-full overflow-hidden min-h-[250px] sm:min-h-[300px] md:min-h-[350px] lg:min-h-[400px]">
               <img
                 src={currentItem.content}
                 alt={currentItem.alt || 'Image'}
-                className="object-cover"
+                className="w-full h-full object-cover filter-none"
               />
             </div>
           ) : (
-            <div className="relative aspect-[3/2] md:aspect-[21/9] lg:aspect-[3/1] w-full bg-green-50 flex flex-col justify-center p-8">
-              <h2 className="text-3xl font-script text-center mb-4 italic text-gray-800">
+            <div className="w-full bg-green-50 flex flex-col justify-center items-center p-4 sm:p-8 min-h-[300px]">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-script text-center mb-3 sm:mb-4 italic text-gray-800">
                 Hôtel L'Eterlou
               </h2>
-              <p className="text-center text-2xl text-gray-700 leading-relaxed max-w-2xl mx-auto h-[300px] flex justify-center items-center">
+              <p className="text-center text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
                 {currentItem.content}
               </p>
               {currentItem.description && (
-                <p className="text-center mt-4 text-sm italic text-gray-600 max-w-2xl mx-auto">
+                <p className="text-center mt-3 sm:mt-4 text-xs sm:text-sm italic text-gray-600 max-w-2xl mx-auto">
                   {currentItem.description}
                 </p>
               )}

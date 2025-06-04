@@ -23,8 +23,6 @@ const Home: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  console.log('Variable de test Render:', process.env.REACT_APP_RENDER_TEST);
-
   return (
     <HomeContainer>
       <MainText>Hâte de célébrer notre union dans la magnifique vallée de Méribel!</MainText>
