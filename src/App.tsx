@@ -7,6 +7,7 @@ import MenusPage from './pages/MenusPage';
 import Navigation from './components/Navigation';
 import './App.css';
 import Timeline from './components/Timeline';
+import LocationTransportPage from './pages/LocationTransportPage';
 
 // Composant Layout qui enveloppe la navigation et la page
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -62,6 +63,14 @@ function App() {
           element={
             <Layout>
               <Timeline />
+            </Layout>
+          }
+        />
+        <Route
+          path="/transport"
+          element={
+            <Layout>
+              <LocationTransportPage />
             </Layout>
           }
         />
