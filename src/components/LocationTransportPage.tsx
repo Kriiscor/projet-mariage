@@ -2,8 +2,6 @@ import React from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 // console.log('Contenu de process.env accessible:', JSON.stringify(process.env));
-console.log('REACT_APP_GOOGLE_MAPS_API_KEY:', process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
-console.log('REACT_APP_TEST_MESSAGE:', process.env.REACT_APP_TEST_MESSAGE);
 const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 interface MapLocation {
