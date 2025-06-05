@@ -28,11 +28,11 @@ export const HomeContainer = styled.div`
 
   @media (max-width: 768px) {
     padding: 1rem;
-    margin-top: -60px;
     padding-top: calc(1rem + 60px);
-    background-position: center center;
+    background: url('/images/PhotoBackgroundHome.jpg');
+    background-position: 50% 0%;
+    background-size: cover;
     justify-content: center;
-    background-position: 90% 0%;
     &::before {
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3));
     }
@@ -55,6 +55,7 @@ export const MainText = styled.div`
     margin-top: 1rem;
     max-width: 90%;
     line-height: 1.3;
+    margin-bottom: 10rem;
   }
 
   @media (max-width: 480px) {
@@ -73,6 +74,7 @@ export const CenterContent = styled.div`
   @media (max-width: 768px) {
     margin: 0;
     width: 100%;
+    
   }
 `;
 

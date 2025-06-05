@@ -49,7 +49,7 @@ const locations: MapLocation[] = [
     ],
     mapOptions: {
       center: { lat: 45.39423832050754, lng: 6.566548178104319 }, // Approx. Méribel Centre (pour l'Eterlou)
-      zoom: 15,
+      zoom: 18,
     },
   },
   {
@@ -61,7 +61,7 @@ const locations: MapLocation[] = [
     ],
     mapOptions: {
       center: { lat: 45.43150460498419, lng: 6.556745676753012 }, // Approx. Les Allues
-      zoom: 15,
+      zoom: 18,
     },
   },
 ];

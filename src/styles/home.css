@@ -6,7 +6,6 @@
   width: 100%;
   position: relative;
   background: url('../../public/images/Background.png') center 50% / cover no-repeat;
-  background-position: 90% 0%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,9 +135,9 @@
     padding: 1rem;
     margin-top: -60px;
     padding-top: calc(1rem + 60px);
-    background-position: center center;
-    justify-content: center;
+    background: url('../../public/images/PhotoBackgroundHome.jpg');
     background-position: 90% 0%;
+    justify-content: center;
   }
 
   .home-container::before {
@@ -198,6 +197,11 @@
    ============================= */
 
 @media (max-width: 480px) {
+  .home-container {
+    background: url('../../public/images/PhotoBackgroundHome.jpg');
+    background-position: center center;
+  }
+
   .main-text {
     font-size: 1.8rem;
   }
