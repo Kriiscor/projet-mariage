@@ -1,6 +1,5 @@
 import React, { useRef, useCallback } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-
+import { GoogleMap, useJsApiLoader, MarkerF } from '@react-google-maps/api';
 const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 interface MapLocation {
@@ -11,7 +10,6 @@ interface MapLocation {
     center: google.maps.LatLngLiteral;
     zoom: number;
   };
-  markerPosition: google.maps.LatLngLiteral;
 }
 
 // Coordonnées approximatives - À remplacer par les coordonnées exactes
@@ -21,13 +19,13 @@ const locations: MapLocation[] = [
     title: 'Pour vous rendre en train :',
     text: [
       'Gare terminale Moutiers Salins Brides les Bains.',
-      "--> Nous viendrons vous récupérer en voiture. Merci de nous communiquer votre horaire d'arrivée.",
+      '--> Nous viendrons vous récupérer en voiture.',
+      "Merci de nous communiquer votre horaire d'arrivée.",
     ],
     mapOptions: {
-      center: { lat: 45.486, lng: 6.533 }, // Approx. Moutiers
-      zoom: 14,
+      center: { lat: 45.48660636953937, lng: 6.5314979085991 }, // Approx. Moutiers
+      zoom: 15,
     },
-    markerPosition: { lat: 45.486, lng: 6.533 }, // Approx. Moutiers
   },
   {
     id: 'plane',
@@ -38,29 +36,33 @@ const locations: MapLocation[] = [
       'Nous viendrons vous récupérer en voiture.',
     ],
     mapOptions: {
-      center: { lat: 45.725, lng: 5.08 }, // Approx. Aéroport Lyon St Exupéry (Lyon/Genève mentionné, image montre Chambery)
-      // Alternative: Chambery Airport: { lat: 45.638, lng: 5.880 }
+      center: { lat: 45.72434145732518, lng: 5.0895935338018345 }, // Approx. Aéroport Lyon St Exupéry
       zoom: 12,
     },
-    markerPosition: { lat: 45.725, lng: 5.08 }, // Approx. Aéroport Lyon St Exupéry
   },
   {
     id: 'hotel',
     title: "Hotel l'Eterlou",
+    text: [
+      "L'hotel dans lequel nous allons fêter notre mariage",
+      'Pour réserver merci de vous rendre sur la Page Logement',
+    ],
     mapOptions: {
-      center: { lat: 45.397, lng: 6.568 }, // Approx. Méribel Centre (pour l'Eterlou)
+      center: { lat: 45.39423832050754, lng: 6.566548178104319 }, // Approx. Méribel Centre (pour l'Eterlou)
       zoom: 15,
     },
-    markerPosition: { lat: 45.397, lng: 6.568 }, // Approx. Méribel Centre
   },
   {
     id: 'church',
     title: "L'église St Martin des Allues",
+    text: [
+      "L'église dans laquelle nous allons célébrer notre mariage",
+      'Référez vous a la page du planning pour les horraires de célébration',
+    ],
     mapOptions: {
-      center: { lat: 45.447, lng: 6.567 }, // Approx. Les Allues
+      center: { lat: 45.43150460498419, lng: 6.556745676753012 }, // Approx. Les Allues
       zoom: 15,
     },
-    markerPosition: { lat: 45.447, lng: 6.567 }, // Approx. Les Allues
   },
 ];
 
@@ -70,19 +72,20 @@ const mapContainerStyle = {
 };
 
 const LocationTransportPage: React.FC = () => {
+  const { isLoaded, loadError } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: API_KEY || '', // Pass API_KEY, or empty string if undefined
+  });
+
   const mapRef = useRef<google.maps.Map | null>(null);
 
   const onLoad = useCallback((map: google.maps.Map) => {
     mapRef.current = map;
-    // Tenter de déclencher un redimensionnement avec un léger délai
     setTimeout(() => {
       if (mapRef.current) {
-        // Vérifier si la réf est toujours valide
         google.maps.event.trigger(mapRef.current, 'resize');
-        // Optionnel: recentrer la carte peut aussi aider
-        // mapRef.current.setCenter(mapRef.current.getCenter()!);
       }
-    }, 100); // Délai de 100ms
+    }, 100);
   }, []);
 
   const onUnmount = useCallback(() => {
@@ -97,45 +100,64 @@ const LocationTransportPage: React.FC = () => {
     );
   }
 
-  return (
-    <LoadScript googleMapsApiKey={API_KEY}>
-      <div className="container mx-auto min-h-screen bg-gray-100 p-4 font-sans md:p-8">
-        <header className="mb-12 text-center">
-          <h1 className="font-playfair text-4xl text-gray-800 md:text-6xl">
-            Localisation et Transport
-          </h1>
-        </header>
-
-        <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
-          {locations.map((loc) => (
-            <div key={loc.id} className="rounded-lg bg-white p-6 shadow-lg">
-              <h2 className="mb-4 font-playfair text-2xl text-gray-700">{loc.title}</h2>
-              {loc.text &&
-                loc.text.map((paragraph, index) => (
-                  <p key={index} className="mb-2 text-gray-600">
-                    {paragraph}
-                  </p>
-                ))}
-              {/* DIV enveloppant pour débogage de la carte */}
-              <div
-                className="mt-4 overflow-hidden rounded border-4 border-purple-500"
-                style={{ height: mapContainerStyle.height, width: mapContainerStyle.width }} // Appliquer la hauteur ici aussi
-              >
-                <GoogleMap
-                  mapContainerStyle={mapContainerStyle} // Ce style s'applique à un enfant créé par GoogleMap
-                  center={loc.mapOptions.center}
-                  zoom={loc.mapOptions.zoom}
-                  onLoad={onLoad}
-                  onUnmount={onUnmount}
-                >
-                  <Marker position={loc.markerPosition} />
-                </GoogleMap>
-              </div>
-            </div>
-          ))}
-        </div>
+  if (loadError) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <p className="text-xl text-red-500">
+          Erreur lors du chargement de Google Maps: {loadError.message}
+        </p>
       </div>
-    </LoadScript>
+    );
+  }
+
+  if (!isLoaded) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <p className="text-xl">Chargement des cartes...</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="container mx-auto min-h-screen bg-gray-100 p-4 font-sans md:p-8">
+      <header className="mb-12 text-center">
+        <h1 className="font-playfair text-4xl text-gray-800 md:text-6xl">
+          Localisation et Transport
+        </h1>
+      </header>
+
+      <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
+        {locations.map((loc) => (
+          <div key={loc.id} className="rounded-lg bg-white p-6 shadow-lg">
+            <h2 className="mb-4 font-playfair text-2xl text-gray-700">{loc.title}</h2>
+            {loc.text?.map((paragraph, index) => (
+              <p key={index} className="mb-2 text-gray-600">
+                {paragraph}
+              </p>
+            ))}
+            <div
+              className="filter-none mt-4 overflow-hidden rounded"
+              style={{ height: mapContainerStyle.height, width: mapContainerStyle.width }}
+            >
+              <GoogleMap
+                mapContainerStyle={mapContainerStyle}
+                center={loc.mapOptions.center}
+                zoom={loc.mapOptions.zoom}
+                onLoad={onLoad}
+                onUnmount={onUnmount}
+                options={
+                  {
+                    // Options to potentially force rerender or avoid issues, can be experimented with
+                    // disableDefaultUI: true, // Example: if controls were an issue
+                    // gestureHandling: 'greedy' // Example for mobile interaction
+                  }
+                }
+              ></GoogleMap>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

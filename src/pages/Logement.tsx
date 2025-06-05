@@ -135,7 +135,7 @@ const Logement: React.FC = () => {
           <div className="lg:w-1/3 space-y-6">
             <div className="bg-white p-4 sm:p-6 rounded-md shadow-sm">
               <div className="flex flex-col items-center">
-                <div className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[410px] h-auto bg-white p-2 sm:p-3 mx-auto border-4 border-red-500">
+                <div className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[410px] h-auto bg-white p-2 sm:p-3 mx-auto">
                   <img
                     src={process.env.PUBLIC_URL + '/images/QRCODE-hotel.png'}
                     alt="QR Code de l'Hôtel L'Eterlou"

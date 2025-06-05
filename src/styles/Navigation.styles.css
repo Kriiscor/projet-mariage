@@ -1,16 +1,8 @@
 @media (max-width: 768px) {
-  img {
-    width: 35px;
-    height: auto;
-    margin: 1rem 0;
-    filter: brightness(0) invert(1);
-  }
-
   #side-menu-links {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
     height: calc(100vh - 100px);
     gap: 0.5rem;
