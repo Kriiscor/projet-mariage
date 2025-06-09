@@ -197,7 +197,7 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
       {/* Participation au dîner */}
       <div className="text-center">
         <p className="text-sm font-medium text-gray-700 mb-1 underline">
-          Voulez vous participez au repas du vendredi soir ? (à votre charge, 25€ par personne)
+          Voulez vous participer au repas du vendredi soir ? (à votre charge, 25€ par personne)
         </p>
         {/* <p className="text-sm text-blue-600 mb-2 cursor-pointer hover:underline">
           Pour voir les différents menus cliquez{' '}
@@ -301,7 +301,7 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
       {/* Brunch */}
       <div className="text-center">
         <p className="text-sm font-medium text-gray-700 mb-1 underline">
-          Les mariés vous invite à un brunch le dimanche midi, serez vous présent ? (Brunch
+          Les mariés vous invitent à un brunch le dimanche midi, serez vous présent ? (Brunch
           Barbecue)
         </p>
         <div className="flex justify-center space-x-6">

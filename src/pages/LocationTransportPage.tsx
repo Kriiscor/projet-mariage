@@ -57,7 +57,7 @@ const locations: MapLocation[] = [
     title: "L'église St Martin des Allues",
     text: [
       "L'église dans laquelle nous allons célébrer notre mariage",
-      'Référez vous a la page du planning pour les horraires de célébration',
+      'Référez vous a la page du planning pour les horaires de célébration',
     ],
     mapOptions: {
       center: { lat: 45.43150460498419, lng: 6.556745676753012 }, // Approx. Les Allues
