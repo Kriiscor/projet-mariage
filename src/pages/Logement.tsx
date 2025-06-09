@@ -76,6 +76,15 @@ const Logement: React.FC = () => {
                 </p>
               </div>
             </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6 bg-red-50 p-3 sm:p-4 rounded-lg border border-red-200 text-base sm:text-lg">
+              <div className="text-red-800 text-center sm:text-left">
+                <p className="text-sm sm:text-base">
+                  Dès la réservation effectuée : versement d'un premier acompte de 50 % de la
+                  réservation, dans le délai imparti. Le deuxième acompte est à verser 30 jours
+                  avant l'arrivée : 50% de la réservation pour confirmation définitive du dossier.
+                </p>
+              </div>
+            </div>
 
             <div className="space-y-4 text-sm sm:text-base">
               <div className="border-b pb-3">
@@ -128,6 +137,19 @@ const Logement: React.FC = () => {
                   soupente.
                 </p>
               </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6 bg-orange-50 p-3 sm:p-4 rounded-lg border border-orange-200 text-base sm:text-lg">
+                <div className="text-orange-800 text-center sm:text-left">
+                  <p className="text-sm sm:text-base">
+                    Taxe de séjour en supplément à 1.87 € par Adulte par jour à régler le jour du
+                    départ.
+                  </p>
+                  <p className="text-sm sm:text-base">
+                    Lors de votre arrivée à l'Hôtel : Merci de fournir une carte de crédit sur
+                    laquelle sera consigné le montant d'une nuit de votre réservation. Cette caution
+                    sera libérée lors de votre départ de l'Hôtel.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -143,10 +165,17 @@ const Logement: React.FC = () => {
                   />
                 </div>
                 <div className="text-center mt-3 text-sm sm:text-base">
-                  <p className="font-semibold">Contact : Justine RUFFIER ou Dominique TEXIER</p>
-                  <p>Tel : +33 4 79 08 83 09</p>
-                  <p>Mail : event@hoteleterlou.com</p>
-                  <p>Lien du site web : https://www.hoteleterlou.com</p>
+                  <p className="font-semibold">
+                    Faire votre demande auprès du Service Evénementiel :{' '}
+                    <a href="mailto:event@hoteleterlou.com">event@hoteleterlou.com</a>
+                  </p>
+                  <p>
+                    Tel : <a href="tel:+33479088309">+33 4 79 08 83 09</a>
+                  </p>
+                  <p>
+                    Lien du site web :{' '}
+                    <a href="https://www.hoteleterlou.com">https://www.hoteleterlou.com</a>
+                  </p>
                 </div>
               </div>
             </div>

@@ -8,6 +8,7 @@ import Navigation from './components/Navigation';
 import './App.css';
 import Timeline from './components/Timeline';
 import LocationTransportPage from './pages/LocationTransportPage';
+import AdminPage from './pages/AdminPage';
 
 // Composant Layout qui enveloppe la navigation et la page
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -74,6 +75,7 @@ function App() {
             </Layout>
           }
         />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </Router>
   );

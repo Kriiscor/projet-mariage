@@ -73,7 +73,10 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
       {/* Nom et prénom */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="text-center">
-          <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="lastName"
+            className="block text-sm font-medium text-gray-700 mb-1 underline"
+          >
             Nom de famille
           </label>
           <input
@@ -87,7 +90,10 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
           />
         </div>
         <div className="text-center">
-          <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="firstName"
+            className="block text-sm font-medium text-gray-700 mb-1 underline"
+          >
             Prénom
           </label>
           <input
@@ -104,7 +110,7 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
 
       {/* Email */}
       <div className="text-center">
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1 underline">
           Adresse Email
         </label>
         <input
@@ -121,7 +127,9 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
       {/* Présence et Nombre de personnes */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="text-center">
-          <p className="text-sm font-medium text-gray-700 mb-1">Serez-vous présent(e) ?</p>
+          <p className="text-sm font-medium text-gray-700 mb-1 underline">
+            Serez-vous présent(e) ?
+          </p>
           <div className="flex justify-center space-x-6">
             <label className="inline-flex items-center">
               <input
@@ -146,7 +154,10 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
           </div>
         </div>
         <div className="text-center">
-          <label htmlFor="guestCount" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="guestCount"
+            className="block text-sm font-medium text-gray-700 mb-1 underline"
+          >
             Combien êtes vous ?
           </label>
           <div className="relative inline-block w-40">
@@ -185,15 +196,15 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
 
       {/* Participation au dîner */}
       <div className="text-center">
-        <p className="text-sm font-medium text-gray-700 mb-1">
+        <p className="text-sm font-medium text-gray-700 mb-1 underline">
           Voulez vous participez au repas du vendredi soir ? (à votre charge, 25€ par personne)
         </p>
-        <p className="text-sm text-blue-600 mb-2 cursor-pointer hover:underline">
+        {/* <p className="text-sm text-blue-600 mb-2 cursor-pointer hover:underline">
           Pour voir les différents menus cliquez{' '}
           <a href="#" className="text-blue-600 font-medium">
             ici
           </a>
-        </p>
+        </p> */}
         <div className="flex justify-center space-x-6">
           <label className="inline-flex items-center">
             <input
@@ -221,47 +232,48 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
       {/* Choix du menu */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="text-center">
-          <p className="text-sm font-medium text-gray-700 mb-1">
+          <p className="text-sm font-medium text-gray-700 mb-1 underline">
             Veuillez choisir le menu du repas du Samedi
           </p>
-          <div className="flex flex-col items-center space-y-2">
-            <label className="inline-flex items-center">
+          <div className="flex flex-col items-center space-y-4">
+            <label className="inline-flex items-start text-left cursor-pointer">
               <input
                 type="radio"
                 name="dinnerChoice"
                 checked={formData.dinnerChoice === 'raclette'}
                 onChange={() => handleRadioChange('dinnerChoice', 'raclette')}
-                className="h-4 w-4 text-primary-600 focus:ring-primary-500"
+                className="h-4 w-4 mt-1 flex-shrink-0 text-primary-600 focus:ring-primary-500"
               />
-              <span className="ml-2 text-sm">Raclette</span>
+              <div className="ml-2 text-sm">
+                <strong className="font-semibold">Mix Raclette / Fondue</strong>
+                <p className="text-xs text-gray-600">
+                  Fondue aux 3 fromages, Raclette au lait cru, Planche de charcuterie, Salade verte
+                  et Pommes de terre.
+                </p>
+              </div>
             </label>
-            <label className="inline-flex items-center">
+            <label className="inline-flex items-start text-left cursor-pointer">
               <input
                 type="radio"
                 name="dinnerChoice"
                 checked={formData.dinnerChoice === 'pierreChaudde'}
                 onChange={() => handleRadioChange('dinnerChoice', 'pierreChaudde')}
-                className="h-4 w-4 text-primary-600 focus:ring-primary-500"
+                className="h-4 w-4 mt-1 flex-shrink-0 text-primary-600 focus:ring-primary-500"
               />
-              <span className="ml-2 text-sm">Pierre Chaude</span>
+              <div className="ml-2 text-sm">
+                <strong className="font-semibold">Pierre Chaude aux 3 viandes</strong>
+                <p className="text-xs text-gray-600">
+                  (Boeuf, Volaille, Canard) avec sauces, frites maison, salade verte et légumes.
+                </p>
+              </div>
             </label>
           </div>
         </div>
         <div className="text-center">
-          <p className="text-sm font-medium text-gray-700 mb-1">
+          <p className="text-sm font-medium text-gray-700 mb-1 underline">
             Pareillement pour le dessert du Samedi
           </p>
           <div className="flex flex-col items-center space-y-2">
-            <label className="inline-flex items-center">
-              <input
-                type="radio"
-                name="dessertChoice"
-                checked={formData.dessertChoice === 'sorbet'}
-                onChange={() => handleRadioChange('dessertChoice', 'sorbet')}
-                className="h-4 w-4 text-primary-600 focus:ring-primary-500"
-              />
-              <span className="ml-2 text-sm">Sorbet</span>
-            </label>
             <label className="inline-flex items-center">
               <input
                 type="radio"
@@ -270,7 +282,17 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
                 onChange={() => handleRadioChange('dessertChoice', 'tarteMyrille')}
                 className="h-4 w-4 text-primary-600 focus:ring-primary-500"
               />
-              <span className="ml-2 text-sm">Tarte à la myrtille</span>
+              <strong className="ml-2 text-sm">Tarte aux Myrtilles</strong>
+            </label>
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="dessertChoice"
+                checked={formData.dessertChoice === 'sorbet'}
+                onChange={() => handleRadioChange('dessertChoice', 'sorbet')}
+                className="h-4 w-4 text-primary-600 focus:ring-primary-500"
+              />
+              <strong className="ml-2 text-sm">Sorbet Arrosé</strong>
             </label>
           </div>
         </div>
@@ -278,7 +300,7 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
 
       {/* Brunch */}
       <div className="text-center">
-        <p className="text-sm font-medium text-gray-700 mb-1">
+        <p className="text-sm font-medium text-gray-700 mb-1 underline">
           Les mariés vous invite à un brunch le dimanche midi, serez vous présent ? (Brunch
           Barbecue)
         </p>
@@ -319,7 +341,9 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
       {/* Hébergement et dates */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="text-center">
-          <p className="text-sm font-medium text-gray-700 mb-1">Avez-vous besoin d'un logement ?</p>
+          <p className="text-sm font-medium text-gray-700 mb-1 underline">
+            Avez-vous besoin d'un logement ?
+          </p>
           <div className="flex justify-center space-x-6">
             <label className="inline-flex items-center">
               <input
@@ -345,7 +369,7 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
         </div>
         {formData.needsAccommodation && (
           <div className="text-center">
-            <p className="text-sm font-medium text-gray-700 mb-1">
+            <p className="text-sm font-medium text-gray-700 mb-1 underline">
               Si besoin d'un logement quelles seraient vos dates ?
             </p>
             <div className="relative">
@@ -380,8 +404,11 @@ const RsvpForm: React.FC<RsvpFormProps> = ({ onSubmit }) => {
 
       {/* Commentaires */}
       <div className="text-center">
-        <label htmlFor="comments" className="block text-sm font-medium text-gray-700 mb-1">
-          Commentaires ou Questions
+        <label
+          htmlFor="comments"
+          className="block text-sm font-medium text-gray-700 mb-1 underline"
+        >
+          Commentaires, Questions, Allergies, etc.
         </label>
         <textarea
           id="comments"
