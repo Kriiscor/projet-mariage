@@ -60,9 +60,9 @@ const Timeline: React.FC = () => {
         <div className="timeline-day">
           <h3 className="day-title">Dimanche 7 Septembre</h3>
           <div className="timeline-event">
-            <div className="event-time">11h00</div>
+            <div className="event-time">12h00</div>
             <div className="event-description">
-              BBQ
+              Barbecue
               <span className="event-location">Au bord de la piscine</span>
             </div>
           </div>
