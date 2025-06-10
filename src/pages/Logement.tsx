@@ -99,7 +99,7 @@ const Logement: React.FC = () => {
 
               <div className="border-b pb-3">
                 <h4 className="font-bold text-base sm:text-lg">
-                  Chambre 2 Personnes – 170 € par jour
+                  Chambre 2 Personnes – 120 € par jour
                 </h4>
                 <p>→ Lit double avec salle de bain ou douche</p>
                 <p className="text-yellow-600">
