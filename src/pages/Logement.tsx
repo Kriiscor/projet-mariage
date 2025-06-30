@@ -170,7 +170,7 @@ const Logement: React.FC = () => {
                     <a href="mailto:event@hoteleterlou.com">event@hoteleterlou.com</a>
                   </p>
                   <p>
-                    Tel : <a href="tel:+33479088309">+33 4 79 08 83 09</a>
+                    Tel : <a href="tel:+33479088909">+33 4 79 08 89 09</a>
                   </p>
                   <p>
                     Lien du site web :{' '}
