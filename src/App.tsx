@@ -1,83 +1,48 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Logement from './pages/Logement';
-import RsvpPage from './pages/RsvpPage';
-import MenusPage from './pages/MenusPage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import Navigation from './components/Navigation';
-import './App.css';
-import Timeline from './components/Timeline';
+import Home from './pages/Home';
+import RsvpPage from './pages/RsvpPage';
 import LocationTransportPage from './pages/LocationTransportPage';
+import Logement from './pages/Logement';
+import MenusPage from './pages/MenusPage';
 import AdminPage from './pages/AdminPage';
+import LoginPage from './pages/LoginPage';
+import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from './hooks/useAuth';
 
-// Composant Layout qui enveloppe la navigation et la page
-const Layout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <>
-      <Navigation />
-      <div className="main-content">{children}</div>
-    </>
-  );
-};
+import './App.css';
 
-// Styles globaux ajoutés dans le fichier App.css
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <Home />
-            </Layout>
-          }
-        />
-        <Route
-          path="/logement"
-          element={
-            <Layout>
-              <Logement />
-            </Layout>
-          }
-        />
-        <Route
-          path="/formulaire"
-          element={
-            <Layout>
-              <RsvpPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/menus"
-          element={
-            <Layout>
-              <MenusPage />
-            </Layout>
-          }
-        />
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <AuthProvider>
+          <div className="App">
+            <Navigation />
+            <main>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/rsvp" element={<RsvpPage />} />
+                <Route path="/location" element={<LocationTransportPage />} />
+                <Route path="/logement" element={<Logement />} />
+                <Route path="/menus" element={<MenusPage />} />
+                <Route path="/login" element={<LoginPage />} />
 
-        <Route
-          path="/programme"
-          element={
-            <Layout>
-              <Timeline />
-            </Layout>
-          }
-        />
-        <Route
-          path="/transport"
-          element={
-            <Layout>
-              <LocationTransportPage />
-            </Layout>
-          }
-        />
-        {/* <Route path="/admin" element={<AdminPage />} /> */}
-      </Routes>
-    </Router>
+                {/* Route Admin Protégée */}
+                <Route path="/admin" element={<ProtectedRoute />}>
+                  <Route index element={<AdminPage />} />
+                </Route>
+              </Routes>
+            </main>
+          </div>
+        </AuthProvider>
+      </Router>
+    </QueryClientProvider>
   );
 }
 
