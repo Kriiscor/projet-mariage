@@ -74,7 +74,6 @@ export const CenterContent = styled.div`
   @media (max-width: 768px) {
     margin: 0;
     width: 100%;
-    
   }
 `;
 

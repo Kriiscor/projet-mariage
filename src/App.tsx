@@ -14,6 +14,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './hooks/useAuth';
 
 import './App.css';
+import Timeline from './components/Timeline';
 
 const queryClient = new QueryClient();
 
@@ -24,11 +25,12 @@ function App() {
         <AuthProvider>
           <div className="App">
             <Navigation />
-            <main>
+            <main className="main-content">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/rsvp" element={<RsvpPage />} />
-                <Route path="/location" element={<LocationTransportPage />} />
+                <Route path="/formulaire" element={<RsvpPage />} />
+                <Route path="/transport" element={<LocationTransportPage />} />
+                <Route path="/programme" element={<Timeline />} />
                 <Route path="/logement" element={<Logement />} />
                 <Route path="/menus" element={<MenusPage />} />
                 <Route path="/login" element={<LoginPage />} />

@@ -12,7 +12,6 @@
   justify-content: space-between;
   color: white;
   padding: 2rem;
-  margin-top: -80px;
   padding-top: calc(2rem + 80px);
 }
 
@@ -133,7 +132,6 @@
 @media (max-width: 768px) {
   .home-container {
     padding: 1rem;
-    margin-top: -60px;
     padding-top: calc(1rem + 60px);
     background: url('../../public/images/PhotoBackgroundHome.jpg');
     background-position: 90% 0%;
