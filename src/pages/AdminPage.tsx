@@ -5,8 +5,20 @@ import type { Guest } from '../types/guest';
 import ViewGuestModal from '../components/admin/ViewGuestModal';
 import EditGuestModal from '../components/admin/EditGuestModal';
 
-// Je vais créer ces composants de modal dans une prochaine étape
-// import EditGuestModal from './EditGuestModal';
+// Composant pour une carte de statistique
+const StatCard: React.FC<{ title: string; value: string | number; icon: React.ReactNode }> = ({
+  title,
+  value,
+  icon,
+}) => (
+  <div className="flex items-center rounded-lg bg-white p-4 shadow">
+    <div className="mr-4 rounded-full bg-blue-100 p-3 text-blue-500">{icon}</div>
+    <div>
+      <p className="text-sm font-medium text-gray-500">{title}</p>
+      <p className="text-2xl font-bold text-gray-800">{value}</p>
+    </div>
+  </div>
+);
 
 const AdminPage: React.FC = () => {
   const queryClient = useQueryClient();
@@ -54,12 +66,47 @@ const AdminPage: React.FC = () => {
     return <div className="p-4 text-red-500">Erreur lors du chargement des données.</div>;
   }
 
-  // S'assurer que les données sont bien un tableau avant de les afficher
   const guestList = Array.isArray(guests) ? guests : [];
+  const attendingGuests = guestList.filter((g) => g.isAttending);
+
+  // Calcul des statistiques
+  const totalResponses = guestList.length;
+  const totalAttending = attendingGuests.length;
+  const totalGuestCount = attendingGuests.reduce((sum, g) => sum + g.guestCount, 0);
+  const brunchParticipants = attendingGuests.filter((g) => g.brunchParticipation).length;
+  const dinnerParticipants = attendingGuests.filter((g) => g.dinnerParticipation).length;
+
+  const dinnerChoices = attendingGuests.reduce((acc, guest) => {
+    if (guest.dinnerChoice) {
+      acc[guest.dinnerChoice] = (acc[guest.dinnerChoice] || 0) + 1;
+    }
+    return acc;
+  }, {} as Record<string, number>);
 
   return (
-    <div className="container mx-auto p-4 md:p-8 font-sans">
-      <h1 className="mb-8 text-3xl font-bold text-gray-800">Réponses des Invités</h1>
+    <div className="container mx-auto p-4 font-sans md:p-8">
+      <h1 className="mb-8 text-3xl font-bold text-gray-800">Tableau de Bord</h1>
+
+      {/* Section des statistiques */}
+      <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <StatCard title="Réponses Totales" value={totalResponses} icon={<span>📊</span>} />
+        <StatCard
+          title="Participants (Total)"
+          value={`${totalAttending} (${totalGuestCount} pers.)`}
+          icon={<span>👥</span>}
+        />
+        <StatCard
+          title="Participants au Brunch"
+          value={brunchParticipants}
+          icon={<span>🥐</span>}
+        />
+        <StatCard title="Participants au Dîner" value={dinnerParticipants} icon={<span>🍽️</span>} />
+        {Object.entries(dinnerChoices).map(([choice, count]) => (
+          <StatCard key={choice} title={`Menu: ${choice}`} value={count} icon={<span>🍽️</span>} />
+        ))}
+      </div>
+
+      <h2 className="mb-8 text-2xl font-bold text-gray-800">Liste des Invités</h2>
 
       <div className="overflow-x-auto rounded-lg bg-white shadow">
         <table className="min-w-full divide-y divide-gray-200">
