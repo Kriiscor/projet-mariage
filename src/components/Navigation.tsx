@@ -88,7 +88,7 @@ const Navigation: React.FC<NavigationProps> = ({ className = '', isDarkMode = fa
           >
             Programme
           </a>
-        </div>*/} 
+        </div>*/}
 
         {/* Menu Button */}
         <button
@@ -168,6 +168,14 @@ const Navigation: React.FC<NavigationProps> = ({ className = '', isDarkMode = fa
                 className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full"
               >
                 Transports
+              </a>
+              <a
+                id="side-menu-link"
+                href="/dabke"
+                onClick={closeMenu}
+                className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full"
+              >
+                Dabke
               </a>
               {/*<a
                 id="side-menu-link"

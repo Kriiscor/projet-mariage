@@ -12,6 +12,7 @@ import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './hooks/useAuth';
+import Dabke from './pages/Dabke';
 
 import './App.css';
 import Timeline from './components/Timeline';
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/logement" element={<Logement />} />
                 <Route path="/menus" element={<MenusPage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/dabke" element={<Dabke />} />
 
                 {/* Route Admin Protégée */}
                 <Route path="/admin" element={<ProtectedRoute />}>
