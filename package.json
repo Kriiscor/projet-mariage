@@ -5,6 +5,8 @@
   "homepage": ".",
   "dependencies": {
     "@react-google-maps/api": "^2.20.6",
+    "@stripe/react-stripe-js": "^3.9.0",
+    "@stripe/stripe-js": "^7.8.0",
     "@tanstack/react-query": "^5.0.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

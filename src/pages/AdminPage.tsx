@@ -4,6 +4,7 @@ import { getGuests, deleteGuest } from '../services/guestService';
 import type { Guest } from '../types/guest';
 import ViewGuestModal from '../components/admin/ViewGuestModal';
 import EditGuestModal from '../components/admin/EditGuestModal';
+import ChatBot from '../components/ChatBot';
 
 // Composant pour une carte de statistique
 const StatCard: React.FC<{ title: string; value: string | number; icon: React.ReactNode }> = ({
@@ -87,105 +88,124 @@ const AdminPage: React.FC = () => {
     <div className="container mx-auto p-4 font-sans md:p-8">
       <h1 className="mb-8 text-3xl font-bold text-gray-800">Tableau de Bord</h1>
 
-      {/* Section des statistiques */}
-      <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <StatCard title="Réponses Totales" value={totalResponses} icon={<span>📊</span>} />
-        <StatCard
-          title="Participants (Total)"
-          value={`${totalAttending} (${totalGuestCount} pers.)`}
-          icon={<span>👥</span>}
-        />
-        <StatCard
-          title="Participants au Brunch"
-          value={brunchParticipants}
-          icon={<span>🥐</span>}
-        />
-        <StatCard title="Participants au Dîner" value={dinnerParticipants} icon={<span>🍽️</span>} />
-        {Object.entries(dinnerChoices).map(([choice, count]) => (
-          <StatCard key={choice} title={`Menu: ${choice}`} value={count} icon={<span>🍽️</span>} />
-        ))}
-      </div>
-
-      <h2 className="mb-8 text-2xl font-bold text-gray-800">Liste des Invités</h2>
-
-      <div className="overflow-x-auto rounded-lg bg-white shadow">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-              >
-                Nom
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-              >
-                Présence
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-              >
-                Nb. Invités
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-              >
-                Email
-              </th>
-              <th scope="col" className="relative px-6 py-3">
-                <span className="sr-only">Actions</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200 bg-white">
-            {guestList.map((guest) => (
-              <tr key={guest._id}>
-                <td className="whitespace-nowrap px-6 py-4">
-                  <div className="text-sm font-medium text-gray-900">{`${guest.firstName} ${guest.lastName}`}</div>
-                </td>
-                <td className="whitespace-nowrap px-6 py-4">
-                  {guest.isAttending ? (
-                    <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
-                      Oui
-                    </span>
-                  ) : (
-                    <span className="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800">
-                      Non
-                    </span>
-                  )}
-                </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                  {guest.guestCount}
-                </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{guest.email}</td>
-                <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                  <button
-                    onClick={() => handleView(guest)}
-                    className="text-indigo-600 hover:text-indigo-900"
-                  >
-                    Voir
-                  </button>
-                  <button
-                    onClick={() => handleEdit(guest)}
-                    className="ml-4 text-yellow-600 hover:text-yellow-900"
-                  >
-                    Modifier
-                  </button>
-                  <button
-                    onClick={() => handleDelete(guest._id)}
-                    className="ml-4 text-red-600 hover:text-red-900"
-                  >
-                    Supprimer
-                  </button>
-                </td>
-              </tr>
+      <div className="mb-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          {/* Section des statistiques */}
+          <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <StatCard title="Réponses Totales" value={totalResponses} icon={<span>📊</span>} />
+            <StatCard
+              title="Participants (Total)"
+              value={`${totalAttending} (${totalGuestCount} pers.)`}
+              icon={<span>👥</span>}
+            />
+            <StatCard
+              title="Participants au Brunch"
+              value={brunchParticipants}
+              icon={<span>🥐</span>}
+            />
+            <StatCard
+              title="Participants au Dîner"
+              value={dinnerParticipants}
+              icon={<span>🍽️</span>}
+            />
+            {Object.entries(dinnerChoices).map(([choice, count]) => (
+              <StatCard
+                key={choice}
+                title={`Menu: ${choice}`}
+                value={count}
+                icon={<span>🍽️</span>}
+              />
             ))}
-          </tbody>
-        </table>
+          </div>
+
+          <h2 className="mb-8 text-2xl font-bold text-gray-800">Liste des Invités</h2>
+
+          <div className="overflow-x-auto rounded-lg bg-white shadow">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                  >
+                    Nom
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                  >
+                    Présence
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                  >
+                    Nb. Invités
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                  >
+                    Email
+                  </th>
+                  <th scope="col" className="relative px-6 py-3">
+                    <span className="sr-only">Actions</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 bg-white">
+                {guestList.map((guest) => (
+                  <tr key={guest._id}>
+                    <td className="whitespace-nowrap px-6 py-4">
+                      <div className="text-sm font-medium text-gray-900">{`${guest.firstName} ${guest.lastName}`}</div>
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4">
+                      {guest.isAttending ? (
+                        <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
+                          Oui
+                        </span>
+                      ) : (
+                        <span className="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800">
+                          Non
+                        </span>
+                      )}
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                      {guest.guestCount}
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                      {guest.email}
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                      <button
+                        onClick={() => handleView(guest)}
+                        className="text-indigo-600 hover:text-indigo-900"
+                      >
+                        Voir
+                      </button>
+                      <button
+                        onClick={() => handleEdit(guest)}
+                        className="ml-4 text-yellow-600 hover:text-yellow-900"
+                      >
+                        Modifier
+                      </button>
+                      <button
+                        onClick={() => handleDelete(guest._id)}
+                        className="ml-4 text-red-600 hover:text-red-900"
+                      >
+                        Supprimer
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="lg:col-span-1">
+          <ChatBot />
+        </div>
       </div>
 
       {isViewModalOpen && selectedGuest && (

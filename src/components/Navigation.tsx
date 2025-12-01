@@ -177,6 +177,14 @@ const Navigation: React.FC<NavigationProps> = ({ className = '', isDarkMode = fa
               >
                 Dabke
               </a>
+              <a
+                id="side-menu-link"
+                href="/cagnotte"
+                onClick={closeMenu}
+                className="text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-full"
+              >
+                Cagnotte du Mariage
+              </a>
               {/*<a
                 id="side-menu-link"
                 href="/bio"

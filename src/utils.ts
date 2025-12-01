@@ -1,9 +1,4 @@
-import {
-  addMonths,
-  differenceInDays,
-  differenceInHours,
-  differenceInMonths,
-} from "date-fns";
+import { addMonths, differenceInDays, differenceInHours, differenceInMonths } from 'date-fns';
 
 export interface TimeLeft {
   months: number;
@@ -11,8 +6,8 @@ export interface TimeLeft {
   hours: number;
 }
 
-// Date du mariage : 6 septembre 2025
-const WEDDING_DATE = new Date(2025, 8, 6, 0, 0, 0); // Mois commence à 0, donc 8 = septembre
+// Date du mariage : 24 décembre 2025
+const WEDDING_DATE = new Date(2025, 11, 24, 0, 0, 0); // Mois commence à 0, donc 11 = décembre
 
 export const calculateTimeLeft = (): TimeLeft => {
   const now = new Date();

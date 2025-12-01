@@ -12,39 +12,51 @@ import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './hooks/useAuth';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import Dabke from './pages/Dabke';
+import CagnottePage from './pages/CagnottePage';
+import PaymentSuccess from './pages/PaymentSuccess';
+import PaymentCancel from './pages/PaymentCancel';
 
 import './App.css';
 import Timeline from './components/Timeline';
 
 const queryClient = new QueryClient();
 
+const stripePromise = loadStripe(process.env.VITE_STRIPE_PUBLISHABLE_KEY || '');
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <AuthProvider>
-          <div className="App">
-            <Navigation />
-            <main className="main-content">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/formulaire" element={<RsvpPage />} />
-                <Route path="/transport" element={<LocationTransportPage />} />
-                <Route path="/programme" element={<Timeline />} />
-                <Route path="/logement" element={<Logement />} />
-                <Route path="/menus" element={<MenusPage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/dabke" element={<Dabke />} />
+        <Elements stripe={stripePromise}>
+          <AuthProvider>
+            <div className="App">
+              <Navigation />
+              <main className="main-content">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/formulaire" element={<RsvpPage />} />
+                  <Route path="/transport" element={<LocationTransportPage />} />
+                  <Route path="/programme" element={<Timeline />} />
+                  <Route path="/logement" element={<Logement />} />
+                  <Route path="/menus" element={<MenusPage />} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/dabke" element={<Dabke />} />
+                  <Route path="/cagnotte" element={<CagnottePage />} />
+                  <Route path="/payment/success" element={<PaymentSuccess />} />
+                  <Route path="/payment/cancel" element={<PaymentCancel />} />
 
-                {/* Route Admin Protégée */}
-                <Route path="/admin" element={<ProtectedRoute />}>
-                  <Route index element={<AdminPage />} />
-                </Route>
-              </Routes>
-            </main>
-          </div>
-        </AuthProvider>
+                  {/* Route Admin Protégée */}
+                  <Route path="/admin" element={<ProtectedRoute />}>
+                    <Route index element={<AdminPage />} />
+                  </Route>
+                </Routes>
+              </main>
+            </div>
+          </AuthProvider>
+        </Elements>
       </Router>
     </QueryClientProvider>
   );
