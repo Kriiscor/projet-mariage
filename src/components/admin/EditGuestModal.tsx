@@ -55,7 +55,7 @@ const EditGuestModal: React.FC<EditGuestModalProps> = ({ guest, onClose }) => {
   const onSubmit = (data: Guest) => {
     // S'assurer que l'ID est présent
     if (!guest._id) {
-      alert('Erreur : ID de l\'invité manquant');
+      alert("Erreur : ID de l'invité manquant");
       return;
     }
 
@@ -65,8 +65,7 @@ const EditGuestModal: React.FC<EditGuestModalProps> = ({ guest, onClose }) => {
       _id: guest._id,
       guestCount: Number(data.guestCount),
     };
-    
-    console.log('Données envoyées pour mise à jour:', formData);
+
     updateMutation.mutate(formData);
   };
 
