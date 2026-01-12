@@ -14,8 +14,6 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 const guestApi = axios.create({
   baseURL: `${API_URL}/guests`,
-  // Potentiellement, vous aurez besoin de configuration d'authentification ici
-  // withCredentials: true,
 });
 
 /**

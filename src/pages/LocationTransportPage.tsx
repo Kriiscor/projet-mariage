@@ -1,5 +1,7 @@
 import React, { useRef, useCallback } from 'react';
-import { GoogleMap, useJsApiLoader, MarkerF } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import Seo from '../components/SEO';
+import Footer from '../components/Footer';
 const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 interface MapLocation {
@@ -119,45 +121,52 @@ const LocationTransportPage: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto min-h-screen bg-gray-100 p-4 font-sans md:p-8">
-      <header className="mb-12 text-center">
-        <h1 className="font-playfair text-4xl text-gray-800 md:text-6xl">
-          Localisation et Transport
-        </h1>
-      </header>
+    <>
+      <Seo
+        title="Transport et Localisation - Mariage de Coralie et Ralph"
+        description="Informations pratiques pour vous rendre à notre mariage : transport en train, avion, et localisation de l'hôtel et de l'église à Méribel."
+      />
+      <div className="container mx-auto min-h-screen bg-gray-100 p-4 font-sans md:p-8 pb-24">
+        <header className="mb-12 text-center">
+          <h1 className="font-playfair text-4xl text-gray-800 md:text-6xl">
+            Localisation et Transport
+          </h1>
+        </header>
 
-      <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
-        {locations.map((loc) => (
-          <div key={loc.id} className="rounded-lg bg-white p-6 shadow-lg">
-            <h2 className="mb-4 font-playfair text-2xl text-gray-700">{loc.title}</h2>
-            {loc.text?.map((paragraph, index) => (
-              <p key={index} className="mb-2 text-gray-600">
-                {paragraph}
-              </p>
-            ))}
-            <div
-              className="filter-none mt-4 overflow-hidden rounded"
-              style={{ height: mapContainerStyle.height, width: mapContainerStyle.width }}
-            >
-              <GoogleMap
-                mapContainerStyle={mapContainerStyle}
-                center={loc.mapOptions.center}
-                zoom={loc.mapOptions.zoom}
-                onLoad={onLoad}
-                onUnmount={onUnmount}
-                options={
-                  {
-                    // Options to potentially force rerender or avoid issues, can be experimented with
-                    // disableDefaultUI: true, // Example: if controls were an issue
-                    // gestureHandling: 'greedy' // Example for mobile interaction
+        <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
+          {locations.map((loc) => (
+            <div key={loc.id} className="rounded-lg bg-white p-6 shadow-lg">
+              <h2 className="mb-4 font-playfair text-2xl text-gray-700">{loc.title}</h2>
+              {loc.text?.map((paragraph, index) => (
+                <p key={index} className="mb-2 text-gray-600">
+                  {paragraph}
+                </p>
+              ))}
+              <div
+                className="filter-none mt-4 overflow-hidden rounded"
+                style={{ height: mapContainerStyle.height, width: mapContainerStyle.width }}
+              >
+                <GoogleMap
+                  mapContainerStyle={mapContainerStyle}
+                  center={loc.mapOptions.center}
+                  zoom={loc.mapOptions.zoom}
+                  onLoad={onLoad}
+                  onUnmount={onUnmount}
+                  options={
+                    {
+                      // Options to potentially force rerender or avoid issues, can be experimented with
+                      // disableDefaultUI: true, // Example: if controls were an issue
+                      // gestureHandling: 'greedy' // Example for mobile interaction
+                    }
                   }
-                }
-              ></GoogleMap>
+                ></GoogleMap>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

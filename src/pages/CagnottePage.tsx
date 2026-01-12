@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { createCheckoutSession } from '../services/paymentService';
 import BalanceDisplay from '../components/BalanceDisplay';
+import Seo from '../components/SEO';
+import Footer from '../components/Footer';
 
 interface IFormInput {
   name: string;
@@ -35,7 +37,12 @@ const CagnottePage = () => {
   const presetAmounts = [20, 50, 100, 200];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-[#f8f5e6] to-[#e8e2c7] py-12 px-4 relative overflow-hidden">
+    <>
+      <Seo
+        title="Cagnotte de Mariage - Coralie et Ralph"
+        description="Votre présence est le plus beau des cadeaux. Si vous souhaitez participer à notre lune de miel, voici notre cagnotte de mariage. Paiement sécurisé par Stripe."
+      />
+      <div className="min-h-screen bg-gradient-to-b from-white via-[#f8f5e6] to-[#e8e2c7] py-12 px-4 pb-24 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-pink-300 rounded-full blur-3xl"></div>
         <div className="absolute top-40 right-20 w-40 h-40 bg-rose-200 rounded-full blur-3xl"></div>
@@ -183,7 +190,9 @@ const CagnottePage = () => {
           </p>
         </div>
       </div>
+      <Footer />
     </div>
+    </>
   );
 };
 

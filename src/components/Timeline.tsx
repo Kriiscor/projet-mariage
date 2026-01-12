@@ -1,9 +1,10 @@
 import React from 'react';
 import '../styles/Timeline.css';
+import Footer from './Footer';
 
 const Timeline: React.FC = () => {
   return (
-    <div className="timeline-container">
+    <div className="timeline-container" style={{ paddingBottom: '6rem' }}>
       <div className="timeline-header">
         <h2 className="timeline-title">Programme du Weekend</h2>
         <p className="timeline-subtitle">5 - 7 Septembre</p>
@@ -72,6 +73,7 @@ const Timeline: React.FC = () => {
       <div className="timeline-footer">
         <p className="timeline-note">Plus de détails à venir</p>
       </div>
+      <Footer />
     </div>
   );
 };

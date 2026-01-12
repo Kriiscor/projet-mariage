@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { login as loginService } from '../services/authService';
+import Footer from '../components/Footer';
 
 const LoginPage: React.FC = () => {
   const [password, setPassword] = useState('');
@@ -30,7 +31,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-[#f8f5e6] to-[#e8e2c7] py-12 px-4 relative overflow-hidden flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-b from-white via-[#f8f5e6] to-[#e8e2c7] py-12 px-4 pb-24 relative overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-pink-300 rounded-full blur-3xl"></div>
         <div className="absolute top-40 right-20 w-40 h-40 bg-rose-200 rounded-full blur-3xl"></div>
@@ -167,6 +168,7 @@ const LoginPage: React.FC = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

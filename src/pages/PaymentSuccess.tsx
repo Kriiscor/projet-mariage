@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 const PaymentSuccess = () => {
   const [searchParams] = useSearchParams();
@@ -15,7 +16,7 @@ const PaymentSuccess = () => {
   }, [sessionId]);
 
   return (
-    <div className="container mx-auto p-8 text-center">
+    <div className="container mx-auto p-8 pb-24 text-center">
       <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
         <div className="text-green-500 text-6xl mb-4">✓</div>
         <h1 className="text-3xl font-playfair mb-4">Paiement réussi !</h1>
@@ -29,6 +30,7 @@ const PaymentSuccess = () => {
           Retour à l'accueil
         </button>
       </div>
+      <Footer />
     </div>
   );
 };
