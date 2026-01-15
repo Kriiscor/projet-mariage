@@ -53,11 +53,19 @@ const EditGuestModal: React.FC<EditGuestModalProps> = ({ guest, onClose }) => {
   });
 
   const onSubmit = (data: Guest) => {
-    // Convertir les valeurs numériques
+    // S'assurer que l'ID est présent
+    if (!guest._id) {
+      alert("Erreur : ID de l'invité manquant");
+      return;
+    }
+
+    // Convertir les valeurs numériques et s'assurer que l'ID est inclus
     const formData = {
       ...data,
+      _id: guest._id,
       guestCount: Number(data.guestCount),
     };
+
     updateMutation.mutate(formData);
   };
 
