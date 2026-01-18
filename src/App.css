@@ -17,6 +17,19 @@ body {
   padding-top: 80px; /* Hauteur de la barre de navigation */
 }
 
+/* Page d'accueil : éviter la bande blanche (HomeContainer en position:fixed, main doit combler) */
+html.page-home,
+body.page-home {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #1a1f2a;
+}
+
+body.page-home .main-content {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
 /* Classes utilitaires pour les polices */
 .font-script {
   font-family: 'Dancing Script', cursive;

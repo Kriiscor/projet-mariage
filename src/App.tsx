@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { HelmetProvider } from 'react-helmet-async';
+import { Toaster } from 'react-hot-toast';
 
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
@@ -20,6 +21,7 @@ import CagnottePage from './pages/CagnottePage';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentCancel from './pages/PaymentCancel';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import LegalMentions from './pages/LegalMentions';
 
 import './App.css';
 import Timeline from './components/Timeline';
@@ -36,6 +38,7 @@ function App() {
           <Elements stripe={stripePromise}>
             <AuthProvider>
               <div className="App">
+                <Toaster position="top-right" />
                 <Navigation />
                 <main className="main-content">
                   <Routes>
@@ -51,6 +54,7 @@ function App() {
                     <Route path="/payment/success" element={<PaymentSuccess />} />
                     <Route path="/payment/cancel" element={<PaymentCancel />} />
                     <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
+                    <Route path="/mentions-legales" element={<LegalMentions />} />
 
                     {/* Route Admin Protégée */}
                     <Route path="/admin" element={<ProtectedRoute />}>

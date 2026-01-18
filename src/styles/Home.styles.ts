@@ -1,18 +1,23 @@
 import styled from 'styled-components';
 
 export const HomeContainer = styled.div`
-  height: 100vh;
+  /* position:fixed + inset:0 garantit le plein viewport sur tous les navigateurs/écrans */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
   width: 100%;
-  position: relative;
   background: url('/images/Background.png') center 50% / cover no-repeat;
   background-position: 90% 0%;
+  background-color: #1a1f2a;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   color: white;
   padding: 2rem;
-  margin-top: -80px;
   padding-top: calc(2rem + 80px);
 
   &::before {
@@ -29,9 +34,10 @@ export const HomeContainer = styled.div`
   @media (max-width: 768px) {
     padding: 1rem;
     padding-top: calc(1rem + 60px);
-    background: url('/images/PhotoBackgroundHome.jpg');
+    background-image: url('/images/PhotoBackgroundHome.jpg');
     background-position: 50% 0%;
     background-size: cover;
+    background-color: #1a1f2a;
     justify-content: center;
     &::before {
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3));
@@ -39,7 +45,7 @@ export const HomeContainer = styled.div`
   }
 `;
 
-export const MainText = styled.div`
+export const Titre = styled.h1`
   text-align: center;
   font-family: 'Playfair Display', serif;
   font-size: 3.5rem;

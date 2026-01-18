@@ -4,7 +4,7 @@ import Seo from '../components/SEO';
 import {
   HomeContainer,
   Logo,
-  MainText,
+  Titre,
   CountdownContainer,
   CountdownItem,
   Date,
@@ -24,6 +24,16 @@ const Home: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // Classe page-home : fond sombre + main min-height pour éviter la bande blanche (HomeContainer en fixed)
+  useEffect(() => {
+    document.body.classList.add('page-home');
+    document.documentElement.classList.add('page-home');
+    return () => {
+      document.body.classList.remove('page-home');
+      document.documentElement.classList.remove('page-home');
+    };
+  }, []);
+
   return (
     <>
       <Seo
@@ -31,7 +41,7 @@ const Home: React.FC = () => {
         description="Bienvenue sur le site de notre mariage. Découvrez toutes les informations sur notre grande journée du 24 décembre 2025 à Méribel."
       />
       <HomeContainer>
-        <MainText>Hâte de célébrer notre union dans la magnifique vallée de Méribel!</MainText>
+        <Titre>Hâte de célébrer notre union dans la magnifique vallée de Méribel!</Titre>
 
         <CenterContent>
           <CountdownContainer>

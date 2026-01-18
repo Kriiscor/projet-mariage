@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 import { getGuests, deleteGuest } from '../services/guestService';
 import type { Guest } from '../types/guest';
 import ViewGuestModal from '../components/admin/ViewGuestModal';
@@ -40,6 +41,10 @@ const AdminPage: React.FC = () => {
     mutationFn: deleteGuest,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['guests'] });
+      toast.success('Invité supprimé avec succès !');
+    },
+    onError: (error) => {
+      toast.error(`Erreur lors de la suppression : ${error instanceof Error ? error.message : 'Erreur inconnue'}`);
     },
   });
 

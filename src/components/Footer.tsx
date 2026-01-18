@@ -25,6 +25,12 @@ const Footer: React.FC = () => {
             >
               Politique de confidentialité
             </Link>
+            <Link
+              to="/mentions-legales"
+              className="hover:text-pink-300 transition-colors duration-200 text-xs md:text-sm"
+            >
+              Mentions légales
+            </Link>
           </div>
           <div className="text-center md:text-right text-xs text-gray-400">
             <p>© 2025 Mariage de Coralie et Ralph</p>
