@@ -21,9 +21,7 @@ const LegalMentions: React.FC = () => {
                 <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4 mt-8">
                   1. Éditeur du site
                 </h2>
-                <p>
-                  Le présent site est édité par :
-                </p>
+                <p>Le présent site est édité par :</p>
                 <p className="mt-4">
                   <strong>Dubail Corentin</strong>
                   <br />
@@ -45,9 +43,7 @@ const LegalMentions: React.FC = () => {
                 <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4 mt-8">
                   2. Hébergeur
                 </h2>
-                <p>
-                  Ce site est hébergé par :
-                </p>
+                <p>Ce site est hébergé par :</p>
                 <p className="mt-4">
                   <strong>Render Services, Inc.</strong>
                   <br />
@@ -112,8 +108,8 @@ const LegalMentions: React.FC = () => {
                 <p>
                   Ce site peut contenir des liens vers d'autres sites. L'éditeur n'exerce aucun
                   contrôle sur ces sites et décline toute responsabilité quant à leur contenu. La
-                  création de liens hypertextes vers le présent site est soumise à l'accord préalable
-                  de l'éditeur.
+                  création de liens hypertextes vers le présent site est soumise à l'accord
+                  préalable de l'éditeur.
                 </p>
               </section>
 
@@ -122,12 +118,9 @@ const LegalMentions: React.FC = () => {
                   7. Données personnelles et cookies
                 </h2>
                 <p>
-                  Les informations relatives au traitement des données personnelles et à l'utilisation
-                  des cookies sont détaillées dans notre{' '}
-                  <a
-                    href="/politique-confidentialite"
-                    className="text-blue-600 hover:underline"
-                  >
+                  Les informations relatives au traitement des données personnelles et à
+                  l'utilisation des cookies sont détaillées dans notre{' '}
+                  <a href="/politique-confidentialite" className="text-blue-600 hover:underline">
                     Politique de confidentialité
                   </a>
                   {'.'}
@@ -139,9 +132,9 @@ const LegalMentions: React.FC = () => {
                   8. Droit applicable et juridiction compétente
                 </h2>
                 <p>
-                  Les présentes mentions légales sont régies par le droit français. En cas de litige,
-                  et à défaut d'accord amiable, les tribunaux français seront seuls compétents pour
-                  connaître de ce litige.
+                  Les présentes mentions légales sont régies par le droit français. En cas de
+                  litige, et à défaut d'accord amiable, les tribunaux français seront seuls
+                  compétents pour connaître de ce litige.
                 </p>
               </section>
 

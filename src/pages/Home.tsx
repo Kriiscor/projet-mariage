@@ -59,7 +59,7 @@ const Home: React.FC = () => {
             </CountdownItem>
           </CountdownContainer>
 
-          <Date>24.12.2025</Date>
+          <Date>14.02.2026</Date>
 
           <ConfirmButton>
             <a href="/formulaire" style={{ color: 'inherit', textDecoration: 'none' }}>

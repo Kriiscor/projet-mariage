@@ -6,8 +6,8 @@ export interface TimeLeft {
   hours: number;
 }
 
-// Date du mariage : 24 décembre 2025
-const WEDDING_DATE = new Date(2025, 11, 24, 0, 0, 0); // Mois commence à 0, donc 11 = décembre
+// Date du mariage : 14 février 2026
+const WEDDING_DATE = new Date(2026, 1, 14, 0, 0, 0); // Mois commence à 0, donc 1 = février
 
 export const calculateTimeLeft = (): TimeLeft => {
   const now = new Date();
