@@ -1,6 +1,5 @@
 import React from 'react';
 import Seo from '../components/SEO';
-import Footer from '../components/Footer';
 
 /**
  * Interface pour un plat individuel
@@ -251,7 +250,6 @@ const MenusPage: React.FC = () => {
             </a>
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );

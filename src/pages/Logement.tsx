@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SimpleCarousel from '../components/SimpleCarousel';
 import Seo from '../components/SEO';
-import Footer from '../components/Footer';
 
 /**
  * Page d'informations sur les options de logement
@@ -190,19 +189,8 @@ const Logement: React.FC = () => {
               </div>
             </div>
           </div>
-
-          {/* Bouton retour */}
-          <div className="mt-8 text-center">
-            <Link
-              to="/"
-              className="inline-block px-6 py-3 bg-blue-100 hover:bg-blue-200 text-gray-800 rounded-md transition-colors"
-            >
-              Retour à l'accueil
-            </Link>
-          </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

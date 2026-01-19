@@ -1,6 +1,5 @@
 import React from 'react';
 import Seo from '../components/SEO';
-import Footer from '../components/Footer';
 
 const Dabke: React.FC = () => {
   return (
@@ -92,7 +91,6 @@ const Dabke: React.FC = () => {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );

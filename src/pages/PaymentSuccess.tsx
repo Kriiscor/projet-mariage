@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import Footer from '../components/Footer';
 
 const PaymentSuccess = () => {
   const [searchParams] = useSearchParams();
@@ -30,7 +29,6 @@ const PaymentSuccess = () => {
           Retour à l'accueil
         </button>
       </div>
-      <Footer />
     </div>
   );
 };

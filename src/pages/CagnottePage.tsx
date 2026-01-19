@@ -3,7 +3,6 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { createCheckoutSession } from '../services/paymentService';
 import BalanceDisplay from '../components/BalanceDisplay';
 import Seo from '../components/SEO';
-import Footer from '../components/Footer';
 
 interface IFormInput {
   name: string;
@@ -190,7 +189,6 @@ const CagnottePage = () => {
           </p>
         </div>
       </div>
-      <Footer />
     </div>
     </>
   );

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../components/Footer';
 
 const PaymentCancel = () => {
   const navigate = useNavigate();
@@ -20,7 +19,6 @@ const PaymentCancel = () => {
           Réessayer
         </button>
       </div>
-      <Footer />
     </div>
   );
 };

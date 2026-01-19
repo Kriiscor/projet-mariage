@@ -1,7 +1,6 @@
 import React, { useRef, useCallback } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import Seo from '../components/SEO';
-import Footer from '../components/Footer';
 const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 interface MapLocation {
@@ -165,7 +164,6 @@ const LocationTransportPage: React.FC = () => {
           ))}
         </div>
       </div>
-      <Footer />
     </>
   );
 };

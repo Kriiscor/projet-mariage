@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import RsvpForm, { RsvpFormData } from '../components/RsvpForm';
 import { submitRsvpForm } from '../services/rsvpService';
 import Seo from '../components/SEO';
-import Footer from '../components/Footer';
 import '../App.css';
 import '../styles/RsvpPage.css';
 
@@ -220,7 +219,6 @@ const RsvpPage: React.FC = () => {
             </div>
           )}
         </div>
-        <Footer />
       </div>
     </>
   );

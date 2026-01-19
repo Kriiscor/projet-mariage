@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { login as loginService } from '../services/authService';
-import Footer from '../components/Footer';
 
 const LoginPage: React.FC = () => {
   const [password, setPassword] = useState('');
@@ -168,7 +167,6 @@ const LoginPage: React.FC = () => {
           </form>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

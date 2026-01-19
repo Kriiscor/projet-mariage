@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/Timeline.css';
-import Footer from './Footer';
 
 const Timeline: React.FC = () => {
   return (
@@ -73,7 +72,6 @@ const Timeline: React.FC = () => {
       <div className="timeline-footer">
         <p className="timeline-note">Plus de détails à venir</p>
       </div>
-      <Footer />
     </div>
   );
 };

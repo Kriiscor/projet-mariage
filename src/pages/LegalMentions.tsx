@@ -1,6 +1,5 @@
 import React from 'react';
 import Seo from '../components/SEO';
-import Footer from '../components/Footer';
 
 const LegalMentions: React.FC = () => {
   return (
@@ -166,7 +165,6 @@ const LegalMentions: React.FC = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

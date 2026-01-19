@@ -25,6 +25,7 @@ import LegalMentions from './pages/LegalMentions';
 
 import './App.css';
 import Timeline from './components/Timeline';
+import Footer from './components/Footer';
 
 const queryClient = new QueryClient();
 
@@ -37,10 +38,10 @@ function App() {
         <Router>
           <Elements stripe={stripePromise}>
             <AuthProvider>
-              <div className="App">
+              <div className="App min-h-screen flex flex-col">
                 <Toaster position="top-right" />
                 <Navigation />
-                <main className="main-content">
+                <main className="main-content flex-1">
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/formulaire" element={<RsvpPage />} />
@@ -62,6 +63,7 @@ function App() {
                     </Route>
                   </Routes>
                 </main>
+                <Footer />
               </div>
             </AuthProvider>
           </Elements>

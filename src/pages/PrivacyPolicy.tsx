@@ -1,6 +1,5 @@
 import React from 'react';
 import Seo from '../components/SEO';
-import Footer from '../components/Footer';
 
 const PrivacyPolicy: React.FC = () => {
   return (
@@ -242,7 +241,6 @@ const PrivacyPolicy: React.FC = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
