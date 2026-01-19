@@ -72,6 +72,7 @@ export const Titre = styled.h1`
 export const CenterContent = styled.div`
   display: flex;
   flex-direction: column;
+  height : 70%;
   align-items: center;
   margin: auto 0;
   position: relative;
