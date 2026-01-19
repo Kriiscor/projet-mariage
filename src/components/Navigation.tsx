@@ -226,6 +226,16 @@ const Navigation: React.FC<NavigationProps> = ({ className = '', isDarkMode = fa
                 Photos et Album de Mariage
               </a>*/}
             </div>
+
+            {/* Lien Connexion en bas du menu */}
+            <a
+              id="side-menu-link"
+              href="/login"
+              onClick={closeMenu}
+              className="absolute bottom-8 left-8 right-8 text-white no-underline text-lg text-center p-3 transition-colors duration-300 hover:bg-white/10 w-[calc(100%-4rem)] border-t border-white/20 pt-4"
+            >
+              Connexion
+            </a>
           </div>
         </>
       )}

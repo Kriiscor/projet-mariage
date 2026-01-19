@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SimpleCarousel from '../components/SimpleCarousel';
 import Seo from '../components/SEO';
 
