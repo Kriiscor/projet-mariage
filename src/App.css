@@ -28,6 +28,7 @@ body.page-home {
 body.page-home .main-content {
   min-height: 100vh;
   min-height: 100dvh;
+  zoom: 0.8;
 }
 
 /* Classes utilitaires pour les polices */
